@@ -26,7 +26,7 @@ with open(os.environ.get("DATA") + "/Server/servertest.ini", "r") as fd:
 
 for (key,val) in os.environ.items():
 	parts = key.split('_')
-	if len(parts) < 3 or not parts[0] == "PZ":
+	if len(parts) < 2 or not parts[0] == "PZ":
 		continue
 	cckey = to_camel_case("_".join(parts[1:]).lower())
 	value = val
