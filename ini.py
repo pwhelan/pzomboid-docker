@@ -29,6 +29,24 @@ for (key,val) in os.environ.items():
 	if len(parts) < 2 or not parts[0] == "PZ":
 		continue
 	cckey = to_camel_case("_".join(parts[1:]).lower())
+	if cckey[0:4] == "Upnp":
+		cckey = "UPnP" + cckey[4:]
+	elif cckey == "SteamVac":
+		cckey = "SteamVAC"
+	elif cckey == "NightLengthModifier":
+		cckey = "nightlengthmodifier"
+	elif cckey[0:3] == "Pvp":
+		cckey = "PVP" + cckey[3:]
+	elif cckey == "RconPort":
+		cckey = "RCONPort"
+	elif cckey == "RconPassword":
+		cckey = "RCONPassword"
+	elif cckey == "Voice3d":
+		cckey = "Voice3D"
+	elif cckey == "ServerBrowserAnnouncedIp":
+		cckey = "server_browser_announced_ip"
+	elif cckey == "UseTcpForMapDownloads":
+		cckey = "UseTCPForMapDownloads"
 	value = val
 
 	settings[cckey] = val
