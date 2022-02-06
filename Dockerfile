@@ -39,6 +39,10 @@ RUN ./steamcmd.sh \
 	+app_update 380870 validate \
 	+quit
 
-COPY servertest.ini.default $APP/servertest.ini
+# Create the servertest.ini before we even generate the
+# data so we can modify values on startup.
+RUN mkdir -p $DATA/Server
+COPY --chown=steam:steam \
+	servertest.ini.default $DATA/Server/servertest.ini
 
 ENTRYPOINT ["/start.sh"]

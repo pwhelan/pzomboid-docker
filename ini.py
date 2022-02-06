@@ -19,7 +19,7 @@ def to_camel_case(text):
 
 settings = {}
 
-with open(os.environ.get("APP") + "/servertest.ini", "r") as fd:
+with open(os.environ.get("DATA") + "/Server/servertest.ini", "r") as fd:
 	for line in fd.readlines():
 		(key,val) = line[:-1].split("=")
 		settings[key] = val
@@ -33,6 +33,6 @@ for (key,val) in os.environ.items():
 
 	settings[cckey] = val
 
-with open(os.environ.get("APP") + "/servertest.ini", "w+") as fd:
+with open(os.environ.get("DATA") + "/Server/servertest.ini", "w+") as fd:
 	for (key, val) in settings.items():
 		fd.write(key + "=" + val + "\n")
