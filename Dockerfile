@@ -30,12 +30,6 @@ WORKDIR /steam/steamcmd_linux
 RUN wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz 
 RUN tar -xf steamcmd_linux.tar.gz
 
-RUN ./steamcmd.sh \
-	+force_install_dir $APP \
-	+login anonymous \
-	+app_update 380870 validate \
-	+quit
-
 # Create the servertest.ini before we even generate the
 # data so we can modify values on startup.
 RUN mkdir -p $DATA/Server
