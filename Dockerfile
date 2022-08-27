@@ -23,9 +23,6 @@ RUN chown -R steam /steam
 RUN mkdir $DATA $APP && \
 	chown -R steam $DATA $APP
 
-COPY start.sh /start.sh
-COPY ini.py /ini.py
-
 USER steam
 
 WORKDIR /steam/steamcmd_linux
@@ -44,5 +41,8 @@ RUN ./steamcmd.sh \
 RUN mkdir -p $DATA/Server
 COPY --chown=steam:steam \
 	servertest.ini.default $DATA/Server/servertest.ini
+
+COPY start.sh /start.sh
+COPY ini.py /ini.py
 
 ENTRYPOINT ["/start.sh"]

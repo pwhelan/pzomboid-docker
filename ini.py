@@ -21,8 +21,16 @@ settings = {}
 
 with open(os.environ.get("DATA") + "/Server/servertest.ini", "r") as fd:
 	for line in fd.readlines():
-		(key,val) = line[:-1].split("=")
-		settings[key] = val
+		if line[0] == '#':
+			next
+		if not line.find("="):
+			print("ERROR: bad ini line", line)
+			next
+		try:
+			(key,val) = line[:-1].split("=")
+			settings[key] = val
+		except:
+			print("ERROR: bad ini line=", line)
 
 for (key,val) in os.environ.items():
 	parts = key.split('_')
