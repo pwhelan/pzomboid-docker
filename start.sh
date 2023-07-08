@@ -15,7 +15,7 @@ fi
 
 if [ -f "$APP/start-server.sh" ]; then
 	echo -n "Upgrade server? [N/y]: "
-	read -r resp
+	read -r -t 5 resp
 fi
 
 if [ "$resp" == "Y" ] || [ "$resp" == "y" ] || [ ! -f "$APP/start-server.sh" ]; then
